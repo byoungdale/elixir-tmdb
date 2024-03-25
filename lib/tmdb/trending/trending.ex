@@ -14,8 +14,8 @@ defmodule Tmdb.Trending do
           "total_results" => 20000
       }
   """
-  def all(time_window, params \\ %{}) do
-    get!("trending/all/day?#{URI.encode_query(params)}").body
+  def all(time_window, params \\ %{}) when time_window in ["day", "week"] do
+    get!("trending/all/#{time_window}?#{URI.encode_query(params)}").body
   end
 
   @doc """
@@ -31,8 +31,8 @@ defmodule Tmdb.Trending do
           "total_results" => 20000
       }
   """
-  def movie(time_window, params \\ %{}) do
-    get!("trending/movie/day?#{URI.encode_query(params)}").body
+  def movie(time_window, params \\ %{}) when time_window in ["day", "week"] do
+    get!("trending/movie/#{time_window}?#{URI.encode_query(params)}").body
   end
 
   @doc """
@@ -48,8 +48,8 @@ defmodule Tmdb.Trending do
           "total_results" => 20000
       }
   """
-  def tv(time_window, params \\ %{}) do
-    get!("trending/tv/day?#{URI.encode_query(params)}").body
+  def tv(time_window, params \\ %{}) when time_window in ["day", "week"] do
+    get!("trending/tv/#{time_window}?#{URI.encode_query(params)}").body
   end
 
   @doc """
@@ -65,7 +65,7 @@ defmodule Tmdb.Trending do
           "total_results" => 20000
       }
   """
-  def person(time_window, params \\ %{}) do
-    get!("trending/person/day?#{URI.encode_query(params)}").body
+  def person(time_window, params \\ %{}) when time_window in ["day", "week"] do
+    get!("trending/person/#{time_window}?#{URI.encode_query(params)}").body
   end
 end

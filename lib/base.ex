@@ -1,7 +1,9 @@
 defmodule Tmdb.Base do
   defmacro __using__(_) do
     quote do
-      use HTTPoison.Base
+      def get!(url) do
+        process_url(url) |> Req.get!()
+      end
 
       def process_response_body(body) do
         body

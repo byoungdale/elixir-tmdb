@@ -14,4 +14,22 @@ defmodule TmdbTest do
 
     assert title == "The Hobbit"
   end
+
+  test "test pagination" do
+    %{"page" => page_one, "total_pages" => total_pages} =
+      Tmdb.Search.movies("the lord of ")
+
+    assert page_one == 1
+
+    page_two =
+      Tmdb.Search.movies("the lord of ", %{page: 2})
+      |> Map.get("page")
+
+    assert page_two == 2
+
+    too_many_pages =
+      Tmdb.Search.movies("the lord of ", %{page: total_pages + 1})
+
+    assert too_many_pages["results"] == []
+  end
 end

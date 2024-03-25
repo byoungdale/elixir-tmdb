@@ -16,7 +16,7 @@ defmodule Tmdb.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [extra_applications: [:logger, :httpoison]]
+    [extra_applications: [:logger, :req]]
   end
 
   # Dependencies can be Hex packages:
@@ -30,7 +30,7 @@ defmodule Tmdb.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [
-      {:httpoison, "~> 1.8"},
+      {:req, "~> 0.4.14"},
       {:jason, "~> 1.4"}
     ]
   end
