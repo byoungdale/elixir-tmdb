@@ -1,8 +1,8 @@
 defmodule Tmdb.Movies do
   use Tmdb.Base
 
-  def find(id) do
-    get!("movie/#{id}?append_to_response=trailers").body
+  def find(id, params \\ %{}) do
+    get!("movie/#{id}?#{URI.encode_query(params)}").body
   end
 
   def genres do
@@ -14,27 +14,27 @@ defmodule Tmdb.Movies do
   end
 
   def latest(params \\ %{}) do
-    get!("movie/latest?#{URI.encode_query(params)}&append_to_response=videos").body
+    get!("movie/latest?#{URI.encode_query(params)}").body
   end
 
   def now_playing(params \\ %{}) do
-    get!("movie/now_playing?#{URI.encode_query(params)}&append_to_response=videos").body
+    get!("movie/now_playing?#{URI.encode_query(params)}").body
   end
 
   def popular(params \\ %{}) do
-    get!("movie/popular?#{URI.encode_query(params)}&append_to_response=videos").body
+    get!("movie/popular?#{URI.encode_query(params)}").body
   end
 
   def similar(id, params \\ %{}) do
-    get!("movie/#{id}/similar?#{URI.encode_query(params)}&append_to_response=videos").body
+    get!("movie/#{id}/similar?#{URI.encode_query(params)}").body
   end
 
   def top(params \\ %{}) do
-    get!("movie/top_rated?#{URI.encode_query(params)}&append_to_response=videos").body
+    get!("movie/top_rated?#{URI.encode_query(params)}").body
   end
 
   def upcoming(params \\ %{}) do
-    get!("movie/upcoming?#{URI.encode_query(params)}&append_to_response=videos").body
+    get!("movie/upcoming?#{URI.encode_query(params)}").body
   end
 
   def videos(id, params \\ %{}) do

@@ -32,4 +32,13 @@ defmodule TmdbTest do
 
     assert too_many_pages["results"] == []
   end
+
+  test "movie params" do
+    result =
+      Tmdb.Movies.find(122, %{append_to_response: "alternative_titles,release_dates,images"})
+
+    assert Map.has_key?(result, "alternative_titles")
+    assert Map.has_key?(result, "release_dates")
+    assert Map.has_key?(result, "images")
+  end
 end
